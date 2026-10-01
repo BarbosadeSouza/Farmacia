@@ -1,0 +1,10 @@
+<div class="produto-vitrine">
+  <img src="https://via.pla\ceholder.com/150" alt="{{ nome }}" class="produto-imagem" />
+  <h2>{{ nome }}</h2>
+  <p>R$ {{ preco }}</p>
+  <div class="quantidade-controle">
+    <button (click)="decrementar()">-</button>
+    <input type="number" [(ngModel)]="quantidade" min="0" />
+    <button (click)="incrementar()">+</button>
+  </div>
+</div>
