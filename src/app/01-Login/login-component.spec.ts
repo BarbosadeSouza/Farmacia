@@ -25,7 +25,7 @@ describe('LoginComponent', () => {
     spyOn(console, 'log');
 
     component.email = 'teste@farmacia.com';
-    component.senha = 'senha12345'; // Senha válida (mais de 8 caracteres, letras + números)
+    component.senha = 'senha12345'; 
     component.fazerLogin();
 
     expect(console.log).toHaveBeenCalledWith('Login realizado para:', 'teste@farmacia.com');
@@ -36,7 +36,7 @@ describe('LoginComponent', () => {
     spyOn(console, 'log');
 
     component.email = 'teste@farmacia.com';
-    component.senha = '123456'; // Inválida (apenas números e < 8 caracteres)
+    component.senha = '123456'; 
     component.fazerLogin();
 
     expect(console.log).not.toHaveBeenCalled();
