@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './pagina-inicial.css'
 })
 export class PaginaInicial {
-  titulo = 'Bem-vindo à Farmácia';
+
 }

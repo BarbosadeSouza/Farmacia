@@ -1,21 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { PaginaInicial } from './pagina-inicial';
 
 describe('PaginaInicial', () => {
-  let component: PaginaInicial;
-  let fixture: ComponentFixture<PaginaInicial>;
 
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      imports: [PaginaInicial],
+      imports: [PaginaInicial]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(PaginaInicial);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('deve criar o componente', () => {
+
+    const fixture = TestBed.createComponent(PaginaInicial);
+
+    const pagina = fixture.componentInstance;
+
+    expect(pagina).toBeTruthy();
+
   });
+
 });
