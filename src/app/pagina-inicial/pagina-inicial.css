@@ -1,0 +1,25 @@
+.home-container {
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.cards-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #2e7d32;
+}

@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  imports: [],
   selector: 'app-pagina-inicial',
-  styleUrl: './pagina-inicial.css',
+  standalone: true,
+  imports: [],
   templateUrl: './pagina-inicial.html',
+  styleUrl: './pagina-inicial.css'
 })
-export class PaginaInicial {}
+export class PaginaInicial {
+  titulo = 'Bem-vindo à Farmácia';
+}
