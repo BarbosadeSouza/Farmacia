@@ -1,0 +1,173 @@
+.header {
+
+  height: 75px;
+
+  background-color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 0 45px;
+
+  gap: 30px;
+
+  border-bottom: 1px solid #ddd;
+
+}
+
+
+.logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #07877e;
+
+  font-size: 21px;
+
+}
+
+
+.logo span {
+
+  width: 35px;
+
+  height: 35px;
+
+  background-color: #07877e;
+
+  color: white;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 25px;
+
+}
+
+
+.pesquisa {
+
+  flex: 1;
+
+  max-width: 500px;
+
+  display: flex;
+
+  background-color: #f1f3f3;
+
+  border-radius: 25px;
+
+  overflow: hidden;
+
+}
+
+
+.pesquisa input {
+
+  flex: 1;
+
+  border: none;
+
+  background: transparent;
+
+  padding: 13px 18px;
+
+  outline: none;
+
+}
+
+
+.pesquisa button {
+
+  width: 50px;
+
+  border: none;
+
+  background: transparent;
+
+}
+
+
+.acoes {
+
+  margin-left: auto;
+
+  display: flex;
+
+  gap: 20px;
+
+}
+
+
+.acoes a {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #333;
+
+  text-decoration: none;
+
+}
+
+
+.acoes a div {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+.acoes small {
+
+  color: #888;
+
+}
+
+
+.acoes strong {
+
+  font-size: 12px;
+
+}
+
+
+.menu {
+
+  background-color: #075f59;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 40px;
+
+  padding: 14px;
+
+}
+
+
+.menu a {
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+}

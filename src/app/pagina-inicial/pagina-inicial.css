@@ -11,143 +11,9 @@ body {
 }
 
 
-
-
-.header {
-  height: 75px;
-  background-color: white;
-
-  display: flex;
-  align-items: center;
-
-  padding: 0 45px;
-  gap: 30px;
-
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  color: #07877e;
-
-  font-size: 21px;
-}
-
-.logo span {
-  width: 35px;
-  height: 35px;
-
-  background-color: #07877e;
-
-  color: white;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 25px;
-}
-
-.pesquisa {
-  flex: 1;
-  max-width: 500px;
-
-  display: flex;
-
-  background-color: #f1f3f3;
-
-  border-radius: 25px;
-
-  overflow: hidden;
-}
-
-.pesquisa input {
-  flex: 1;
-
-  border: none;
-
-  background: transparent;
-
-  padding: 13px 18px;
-
-  outline: none;
-}
-
-.pesquisa button {
-  width: 50px;
-
-  border: none;
-
-  background: transparent;
-}
-
-
-
-
-.acoes {
-  margin-left: auto;
-
-  display: flex;
-
-  gap: 20px;
-}
-
-.acoes a {
-  display: flex;
-
-  align-items: center;
-
-  gap: 7px;
-
-  color: #333;
-
-  text-decoration: none;
-}
-
-.acoes a div {
-  display: flex;
-
-  flex-direction: column;
-}
-
-.acoes small {
-  color: #888;
-}
-
-.acoes strong {
-  font-size: 12px;
-}
-
-
-
-
-.menu {
-  background-color: #075f59;
-
-  display: flex;
-
-  justify-content: center;
-
-  gap: 40px;
-
-  padding: 14px;
-}
-
-.menu a {
-  color: white;
-
-  text-decoration: none;
-
-  font-size: 14px;
-}
-
-
-
+/* =========================
+   BANNER
+   ========================= */
 
 .banner {
   min-height: 350px;
@@ -163,9 +29,11 @@ body {
   padding: 50px 12%;
 }
 
+
 .banner-texto {
   max-width: 550px;
 }
+
 
 .tag {
   color: #07877e;
@@ -175,6 +43,7 @@ body {
   font-weight: bold;
 }
 
+
 .banner h1 {
   color: #075f59;
 
@@ -183,11 +52,13 @@ body {
   margin: 15px 0;
 }
 
+
 .banner p {
   color: #666;
 
   margin-bottom: 25px;
 }
+
 
 .botao {
   display: inline-block;
@@ -206,10 +77,13 @@ body {
 }
 
 
-
+/* =========================
+   CARD DO BANNER
+   ========================= */
 
 .banner-card {
   width: 300px;
+
   height: 240px;
 
   background-color: white;
@@ -224,11 +98,13 @@ body {
 
   justify-content: center;
 
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
+
 
 .circulo {
   width: 70px;
+
   height: 70px;
 
   background-color: #07877e;
@@ -240,16 +116,19 @@ body {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   font-size: 40px;
 }
+
 
 .banner-card h2 {
   color: #075f59;
 
   margin-top: 15px;
 }
+
 
 .banner-card p {
   color: #888;
@@ -258,7 +137,9 @@ body {
 }
 
 
-
+/* =========================
+   SEÇÕES
+   ========================= */
 
 .secao {
   max-width: 1200px;
@@ -267,6 +148,7 @@ body {
 
   padding: 50px 30px;
 }
+
 
 .titulo-secao {
   display: flex;
@@ -278,6 +160,7 @@ body {
   margin-bottom: 25px;
 }
 
+
 .titulo-secao span {
   color: #07877e;
 
@@ -285,6 +168,7 @@ body {
 
   font-weight: bold;
 }
+
 
 .titulo-secao h2 {
   color: #075f59;
@@ -294,6 +178,7 @@ body {
   margin-top: 5px;
 }
 
+
 .titulo-secao a {
   color: #07877e;
 
@@ -301,7 +186,9 @@ body {
 }
 
 
-
+/* =========================
+   CATEGORIAS
+   ========================= */
 
 .categorias {
   display: grid;
@@ -310,6 +197,7 @@ body {
 
   gap: 20px;
 }
+
 
 .categoria {
   background-color: white;
@@ -324,11 +212,13 @@ body {
 
   color: #333;
 
-  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
 }
+
 
 .categoria-icone {
   width: 65px;
+
   height: 65px;
 
   margin: auto;
@@ -338,6 +228,7 @@ body {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   font-size: 30px;
@@ -345,11 +236,13 @@ body {
   background-color: #e5f5f3;
 }
 
+
 .categoria h3 {
   margin-top: 15px;
 
   font-size: 15px;
 }
+
 
 .categoria p {
   color: #888;
@@ -360,7 +253,9 @@ body {
 }
 
 
-
+/* =========================
+   OFERTAS
+   ========================= */
 
 .ofertas {
   background-color: #07877e;
@@ -376,15 +271,18 @@ body {
   align-items: center;
 }
 
+
 .ofertas h2 {
   font-size: 30px;
 
   margin: 10px 0;
 }
 
+
 .ofertas p {
   margin-bottom: 20px;
 }
+
 
 .botao-branco {
   background-color: white;
@@ -393,7 +291,9 @@ body {
 }
 
 
-
+/* =========================
+   PRODUTOS
+   ========================= */
 
 .produtos {
   display: grid;
@@ -403,15 +303,8 @@ body {
   gap: 20px;
 }
 
+
 /* .produto styles moved to product component */
-  background-color: white;
-
-  padding: 15px;
-
-  border-radius: 12px;
-
-  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-}
 
 .produto-imagem {
   height: 160px;
@@ -423,12 +316,14 @@ body {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   font-size: 60px;
 
   margin-bottom: 15px;
 }
+
 
 .produto-tag {
   color: #07877e;
@@ -442,11 +337,13 @@ body {
   border-radius: 4px;
 }
 
+
 .produto h3 {
   margin-top: 10px;
 
   font-size: 16px;
 }
+
 
 .produto p {
   color: #888;
@@ -455,6 +352,7 @@ body {
 
   margin: 7px 0;
 }
+
 
 .produto strong {
   display: block;
@@ -465,6 +363,7 @@ body {
 
   margin-bottom: 15px;
 }
+
 
 .produto-botao {
   width: 100%;
