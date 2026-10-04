@@ -1,0 +1,8 @@
+<div class="produto">
+  <div class="produto-imagem {{imageClass}}">{{imageContent}}</div>
+  <span class="produto-tag" *ngIf="tag">{{tag}}</span>
+  <h3>{{title}}</h3>
+  <p>{{description}}</p>
+  <strong>{{price}}</strong>
+  <a [href]="buttonLink" class="botao produto-botao">{{buttonLabel}}</a>
+</div>

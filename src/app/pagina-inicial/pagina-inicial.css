@@ -403,7 +403,7 @@ body {
   gap: 20px;
 }
 
-.produto {
+/* .produto styles moved to product component */
   background-color: white;
 
   padding: 15px;
