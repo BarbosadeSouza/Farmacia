@@ -15,8 +15,9 @@
   border-bottom: 1px solid #ddd;
 
 }
-
-
+/* =========================
+   LOGO
+   ========================= */
 .logo {
 
   display: flex;
@@ -29,8 +30,9 @@
 
   font-size: 21px;
 
-}
+  white-space: nowrap;
 
+}
 
 .logo span {
 
@@ -53,8 +55,9 @@
   font-size: 25px;
 
 }
-
-
+/* =========================
+   PESQUISA
+   ========================= */
 .pesquisa {
 
   flex: 1;
@@ -71,7 +74,6 @@
 
 }
 
-
 .pesquisa input {
 
   flex: 1;
@@ -86,7 +88,6 @@
 
 }
 
-
 .pesquisa button {
 
   width: 50px;
@@ -95,8 +96,15 @@
 
   background: transparent;
 
+  cursor: pointer;
+
+  font-size: 16px;
+
 }
 
+/* =========================
+   AÇÕES
+   ========================= */
 
 .acoes {
 
@@ -107,7 +115,6 @@
   gap: 20px;
 
 }
-
 
 .acoes a {
 
@@ -121,8 +128,15 @@
 
   text-decoration: none;
 
+  transition: color 0.2s;
+
 }
 
+.acoes a:hover {
+
+  color: #07877e;
+
+}
 
 .acoes a div {
 
@@ -132,13 +146,11 @@
 
 }
 
-
 .acoes small {
 
   color: #888;
 
 }
-
 
 .acoes strong {
 
@@ -146,23 +158,53 @@
 
 }
 
+.icone {
+
+  font-size: 20px;
+
+}
+
+/* =========================
+   MENU PRINCIPAL
+   ========================= */
 
 .menu {
 
+  width: 100%;
+
   background-color: #075f59;
+
+  border-bottom: 3px solid #07877e;
+
+}
+
+.menu-container {
 
   display: flex;
 
   justify-content: center;
 
-  gap: 40px;
+  align-items: center;
 
-  padding: 14px;
+  gap: 5px;
 
 }
 
+.menu-item {
 
-.menu a {
+  position: relative;
+
+}
+
+.menu-item > a {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 15px 20px;
 
   color: white;
 
@@ -170,4 +212,212 @@
 
   font-size: 14px;
 
+  transition: background-color 0.2s;
+
+}
+
+.menu-item > a:hover {
+
+  background-color: #07877e;
+
+}
+
+/* =========================
+   SETA
+   ========================= */
+
+.seta {
+
+  font-size: 15px;
+
+  transition: transform 0.2s;
+
+}
+
+.dropdown:hover .seta {
+
+  transform: rotate(180deg);
+
+}
+
+/* =========================
+   SUBMENU
+   ========================= */
+
+.submenu {
+
+  position: absolute;
+
+  top: 100%;
+
+  left: 0;
+
+  min-width: 220px;
+
+  background-color: white;
+
+  border-radius: 0 0 8px 8px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(-5px);
+
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    visibility 0.2s;
+
+  z-index: 1000;
+
+}
+
+.dropdown:hover .submenu {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+
+}
+
+.submenu a {
+
+  display: block;
+
+  padding: 13px 18px;
+
+  color: #333;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  border-bottom: 1px solid #eee;
+
+  transition: background-color 0.2s;
+
+}
+
+.submenu a:last-child {
+
+  border-bottom: none;
+
+}
+
+.submenu a:hover {
+
+  background-color: #e5f5f3;
+
+  color: #075f59;
+
+}
+
+/* =========================
+   OFERTAS
+   ========================= */
+
+.menu-item.destaque > a {
+
+  color: #fff;
+
+  font-weight: bold;
+
+}
+
+.menu-item.destaque > a:hover {
+
+  background-color: #07877e;
+
+}
+
+/* =========================
+   BOTÃO MOBILE
+   ========================= */
+
+.menu-mobile-button {
+
+  display: none;
+
+  border: none;
+
+  background: none;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+}
+
+/* =========================
+   RESPONSIVIDADE
+   ========================= */
+
+@media (max-width: 1000px) {
+
+  .header {
+
+    padding: 0 20px;
+
+    gap: 15px;
+
+  }
+
+  .acoes {
+
+    gap: 10px;
+
+  }
+
+  .acoes a div {
+
+    display: none;
+
+  }
+
+  .acoes a {
+
+    font-size: 20px;
+
+  }
+
+}
+
+@media (max-width: 750px) {
+
+  .header {
+
+    height: 65px;
+
+  }
+
+  .logo strong {
+
+    display: none;
+
+  }
+
+  .pesquisa {
+
+    max-width: none;
+
+  }
+
+  .menu {
+
+    display: none;
+
+  }
+
+  .menu-mobile-button {
+
+    display: block;
+
+  }
 }
