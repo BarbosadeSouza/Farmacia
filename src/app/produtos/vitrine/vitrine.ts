@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { Produto } from '../produto/produto';
 
 @Component({
-  imports: [],
+  standalone: true,
+  imports: [Produto],
   selector: 'app-vitrine',
   styleUrl: './vitrine.css',
   templateUrl: './vitrine.html',

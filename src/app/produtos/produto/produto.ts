@@ -17,4 +17,13 @@ export class Produto {
   @Input() price: string = '';
   @Input() buttonLink: string = '';
   @Input() buttonLabel: string = 'Adicionar à cesta';
+
+  get isIcon(): boolean {
+    return !!this.imageContent && (this.imageContent.startsWith('bi') || this.imageContent.includes('bi-'));
+  }
+
+  get iconClass(): string {
+    if (!this.imageContent) return '';
+    return this.imageContent.startsWith('bi ') ? this.imageContent : `bi ${this.imageContent}`;
+  }
 }

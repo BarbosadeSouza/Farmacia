@@ -1,0 +1,52 @@
+.categoria {
+  margin-bottom: 40px;
+}
+
+.categoria-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.categoria-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #075f59; /* using existing primary color */
+}
+
+.ver-mais {
+  /* reusing existing .botao styles */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  margin-top: 40px;
+}
+
+/* Grid for product cards */
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.botao {
+  border: none;
+  display: inline-block;
+
+  background-color: #07877e;
+
+  color: white;
+
+  text-decoration: none;
+
+  padding: 12px 25px;
+
+  border-radius: 7px;
+
+  font-weight: bold;
+}

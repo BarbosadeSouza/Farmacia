@@ -1,5 +1,11 @@
 <div class="produto">
-  <div class="produto-imagem {{imageClass}}">{{imageContent}}</div>
+  <div class="produto-imagem {{imageClass}}">
+    @if (isIcon) {
+      <i [class]="iconClass"></i>
+    } @else {
+      {{imageContent}}
+    }
+  </div>
   <span class="produto-tag" *ngIf="tag">{{tag}}</span>
   <h3>{{title}}</h3>
   <p>{{description}}</p>

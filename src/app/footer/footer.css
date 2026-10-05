@@ -26,6 +26,11 @@
   color: #030000;
 }
 
+.footer-section p i {
+  color: #159b85;
+  margin-right: 6px;
+}
+
 .footer-section ul {
   list-style: none;
   padding: 0;

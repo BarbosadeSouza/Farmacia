@@ -234,6 +234,8 @@ body {
   font-size: 30px;
 
   background-color: #e5f5f3;
+
+  color: #07877e;
 }
 
 
@@ -369,4 +371,34 @@ body {
   width: 100%;
 
   text-align: center;
+}
+
+.mini-produtos {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+  font-size: 24px;
+  color: #07877e;
+}
+
+.oferta-produtos {
+  display: flex;
+  gap: 20px;
+}
+
+.produto-mini {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 15px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.produto-mini span {
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -20,7 +20,13 @@
   justify-content: center;
   font-size: 60px;
   margin-bottom: 15px;
+  color: #07877e;
 }
+
+.produto-imagem.verde { background-color: #e8f5e9; color: #2e7d32; }
+.produto-imagem.azul { background-color: #e3f2fd; color: #1565c0; }
+.produto-imagem.rosa { background-color: #fce4ec; color: #c2185b; }
+.produto-imagem.amarelo { background-color: #fff8e1; color: #f57f17; }
 
 .produto-tag {
   color: #07877e;
@@ -51,4 +57,20 @@
 .produto-botao {
   width: 100%;
   text-align: center;
+}
+
+.botao {
+  display: inline-block;
+
+  background-color: #07877e;
+
+  color: white;
+
+  text-decoration: none;
+
+  padding: 12px 25px;
+
+  border-radius: 7px;
+
+  font-weight: bold;
 }
