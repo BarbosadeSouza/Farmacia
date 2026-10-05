@@ -1,5 +1,6 @@
 <header class="header">
-  <!-- logo -->
+
+  <!-- Logo -->
   <div class="logo">
     <span>+</span>
     <strong>FarmaVida</strong>
@@ -11,6 +12,7 @@
       type="text"
       placeholder="Buscar produtos na FarmaVida"
     >
+
     <button>
       🔍
     </button>
@@ -18,33 +20,28 @@
 
   <!-- Ações -->
   <div class="acoes">
-    <a href="#login">
+    <a routerLink="/login">
       <span class="icone">👤</span>
-
       <div>
         <small>Olá!</small>
         <strong>Entrar ou cadastrar</strong>
       </div>
-
     </a>
+
     <a href="#pedidos">
       <span class="icone">📦</span>
-
       <div>
         <small>Meus</small>
         <strong>Pedidos</strong>
       </div>
     </a>
 
-
     <a href="#carrinho">
       <span class="icone">🛒</span>
-
       <div>
         <small>Minha</small>
         <strong>Cesta</strong>
       </div>
-
     </a>
   </div>
 
@@ -57,80 +54,17 @@
 
 
 <!-- Menu de navegação -->
-
 <nav class="menu">
 
   <div class="menu-container">
-    <!-- Categorias -->
-    <div class="menu-item dropdown">
 
-      <a href="#categorias">
-        Categorias
-        <span class="seta">⌄</span>
-      </a>
-
-      <div class="submenu">
-        <a href="#medicamentos">
-          💊 Medicamentos
-        </a>
-        <a href="#higiene">
-          🧴 Higiene
-        </a>
-        <a href="#beleza">
-          ✨ Beleza
-        </a>
-        <a href="#vitaminas">
-          💚 Vitaminas
+    @for (item of itensMenu; track item.rota) {
+      <div class="menu-item">
+        <a [routerLink]="item.rota">
+          {{ item.nome }}
         </a>
       </div>
-    </div>
+    }
 
-    <!-- Medicamentos -->
-    <div class="menu-item dropdown">
-      <a href="#medicamentos">
-        Medicamentos
-        <span class="seta">⌄</span>
-      </a>
-
-      <div class="submenu">
-        <a href="#medicamentos">
-          Todos os medicamentos
-        </a>
-        <a href="#analgesicos">
-          Analgésicos
-        </a>
-        <a href="#antigripais">
-          Antigripais
-        </a>
-      </div>
-    </div>
-
-    <!-- Higiene -->
-    <div class="menu-item">
-      <a href="#higiene">
-        Higiene
-      </a>
-    </div>
-
-    <!-- Beleza -->
-    <div class="menu-item">
-      <a href="#beleza">
-        Beleza
-      </a>
-    </div>
-
-    <!-- Vitaminas -->
-    <div class="menu-item">
-      <a href="#vitaminas">
-        Vitaminas
-      </a>
-    </div>
-
-    <!-- Ofertas -->
-    <div class="menu-item destaque">
-      <a href="#ofertas">
-        🔥 Ofertas
-      </a>
-    </div>
   </div>
 </nav>
