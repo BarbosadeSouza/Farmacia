@@ -1,24 +1,27 @@
 <header class="header">
 
+  <!-- Logo -->
   <div class="logo">
     <span>+</span>
     <strong>FarmaVida</strong>
   </div>
 
+  <!-- Pesquisa -->
   <div class="pesquisa">
     <input
       type="text"
       placeholder="Buscar produtos na FarmaVida"
     >
 
-    <button>🔍</button>
+    <button>
+      🔍
+    </button>
   </div>
 
+  <!-- Ações -->
   <div class="acoes">
-
-    <a href="#login">
-      👤
-
+    <a routerLink="/login">
+      <span class="icone">👤</span>
       <div>
         <small>Olá!</small>
         <strong>Entrar ou cadastrar</strong>
@@ -26,8 +29,7 @@
     </a>
 
     <a href="#pedidos">
-      📦
-
+      <span class="icone">📦</span>
       <div>
         <small>Meus</small>
         <strong>Pedidos</strong>
@@ -35,31 +37,34 @@
     </a>
 
     <a href="#carrinho">
-      🛒
-
+      <span class="icone">🛒</span>
       <div>
         <small>Minha</small>
         <strong>Cesta</strong>
       </div>
     </a>
-
   </div>
+
+  <!-- Botão mobile -->
+  <button class="menu-mobile-button">
+    ☰
+  </button>
 
 </header>
 
 
+<!-- Menu de navegação -->
 <nav class="menu">
 
-  <a href="#categorias">Categorias</a>
+  <div class="menu-container">
 
-  <a href="#medicamentos">Medicamentos</a>
+    @for (item of itensMenu; track item.rota) {
+      <div class="menu-item">
+        <a [routerLink]="item.rota">
+          {{ item.nome }}
+        </a>
+      </div>
+    }
 
-  <a href="#higiene">Higiene</a>
-
-  <a href="#beleza">Beleza</a>
-
-  <a href="#vitaminas">Vitaminas</a>
-
-  <a href="#ofertas">Ofertas</a>
-
+  </div>
 </nav>
