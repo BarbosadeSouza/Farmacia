@@ -1,5 +1,4 @@
 
-
 <header class="header">
 
   <div class="logo">
@@ -11,14 +10,16 @@
     <input
       type="text"
       placeholder="Buscar produtos na FarmaVida"
+      [(ngModel)]="busca"
+      (keyup.enter)="irParaProdutos()"
     >
 
-    <button>🔍</button>
+    <button type="button" (click)="irParaProdutos()">🔍</button>
   </div>
 
   <div class="acoes">
 
-    <a href="#login">
+    <a href="/login">
       👤
       <div>
         <small>Olá!</small>
@@ -38,7 +39,14 @@
       🛒
       <div>
         <small>Minha</small>
-        <strong>Cesta</strong>
+        <strong>Cesta ({{ quantidadeCarrinho }})</strong>
+      </div>
+    </a>
+
+    <a href="/gerenciamento">
+      <div>
+        <small>Administração</small>
+        <strong>Gerenciar Produtos</strong>
       </div>
     </a>
 
@@ -47,20 +55,14 @@
 </header>
 
 
-
-
 <nav class="menu">
-
-  <a href="#categorias">Categorias</a>
-  <a href="#medicamentos">Medicamentos</a>
-  <a href="#higiene">Higiene</a>
-  <a href="#beleza">Beleza</a>
-  <a href="#vitaminas">Vitaminas</a>
+  <a href="#categorias" (click)="filtrarCategoria('Todas')">Categorias</a>
+  <a href="#produtos" (click)="filtrarCategoria('Medicamentos')">Medicamentos</a>
+  <a href="#produtos" (click)="filtrarCategoria('Higiene')">Higiene</a>
+  <a href="#produtos" (click)="filtrarCategoria('Beleza')">Beleza</a>
+  <a href="#produtos" (click)="filtrarCategoria('Vitaminas')">Vitaminas</a>
   <a href="#ofertas">Ofertas</a>
-
 </nav>
-
-
 
 
 <section class="banner">
@@ -80,24 +82,20 @@
       para cuidar de você e da sua família.
     </p>
 
-    <a href="#produtos" class="botao">
+    <a href="#produtos" class="botao"
+       (click)="filtrarCategoria('Todas')">
       Comprar agora
     </a>
 
   </div>
 
-
   <div class="banner-card">
 
-    <div class="circulo">
-      +
-    </div>
+    <div class="circulo">+</div>
 
     <h2>FarmaVida</h2>
 
-    <p>
-      Sua saúde em primeiro lugar.
-    </p>
+    <p>Sua saúde em primeiro lugar.</p>
 
     <div class="mini-produtos">
       <span>💊</span>
@@ -110,82 +108,52 @@
 </section>
 
 
-
-
 <section class="secao" id="categorias">
 
   <div class="titulo-secao">
-
     <div>
       <span>ENCONTRE O QUE PRECISA</span>
       <h2>Compre por categoria</h2>
     </div>
 
-    <a href="#categorias">
+    <a href="#produtos" (click)="filtrarCategoria('Todas')">
       Ver todas →
     </a>
-
   </div>
-
 
   <div class="categorias">
 
-    <a href="#medicamentos" class="categoria">
-
-      <div class="categoria-icone medicamento">
-        💊
-      </div>
-
+    <a href="#produtos" class="categoria"
+       (click)="filtrarCategoria('Medicamentos')">
+      <div class="categoria-icone medicamento">💊</div>
       <h3>Medicamentos</h3>
-
       <p>Cuide da sua saúde</p>
-
     </a>
 
-
-    <a href="#higiene" class="categoria">
-
-      <div class="categoria-icone higiene">
-        🧴
-      </div>
-
+    <a href="#produtos" class="categoria"
+       (click)="filtrarCategoria('Higiene')">
+      <div class="categoria-icone higiene">🧴</div>
       <h3>Higiene</h3>
-
       <p>Cuidados diários</p>
-
     </a>
 
-
-    <a href="#beleza" class="categoria">
-
-      <div class="categoria-icone beleza">
-        ✨
-      </div>
-
+    <a href="#produtos" class="categoria"
+       (click)="filtrarCategoria('Beleza')">
+      <div class="categoria-icone beleza">✨</div>
       <h3>Beleza</h3>
-
       <p>Cuide de você</p>
-
     </a>
 
-
-    <a href="#vitaminas" class="categoria">
-
-      <div class="categoria-icone vitaminas">
-        💚
-      </div>
-
+    <a href="#produtos" class="categoria"
+       (click)="filtrarCategoria('Vitaminas')">
+      <div class="categoria-icone vitaminas">💚</div>
       <h3>Vitaminas</h3>
-
       <p>Mais saúde</p>
-
     </a>
 
   </div>
 
 </section>
-
-
 
 
 <section class="ofertas" id="ofertas">
@@ -201,15 +169,14 @@
       com preços especiais.
     </p>
 
-    <a href="#produtos" class="botao botao-branco">
+    <a href="#produtos" class="botao botao-branco"
+       (click)="filtrarCategoria('Todas')">
       Ver ofertas
     </a>
 
   </div>
 
-
   <div class="oferta-produtos">
-
     <div class="produto-mini">
       <span>💊</span>
       <strong>Vitaminas</strong>
@@ -224,11 +191,9 @@
       <span>🧼</span>
       <strong>Higiene</strong>
     </div>
-
   </div>
 
 </section>
-
 
 
 <section class="secao" id="produtos">
@@ -240,114 +205,123 @@
       <h2>Produtos populares</h2>
     </div>
 
-    <a href="#produtos">
+    <a href="#produtos" (click)="limparFiltros()">
       Ver todos →
     </a>
 
   </div>
 
-
   <div class="produtos">
 
-
-  
-
-    <div class="produto">
+    <div class="produto"
+         *ngFor="let produto of produtosFiltrados">
 
       <div class="produto-imagem verde">
-        💊
+        {{ produto.icone }}
       </div>
 
       <span class="produto-tag">
-        Mais vendido
+        {{ produto.destaque }}
       </span>
 
-      <h3>Vitamina C</h3>
+      <h3>{{ produto.nome }}</h3>
 
-      <p>Vitamina C 500mg</p>
+      <p>{{ produto.descricao }}</p>
 
-      <strong>R$ 19,90</strong>
+      <strong>
+        {{ produto.preco | currency:'BRL' }}
+      </strong>
 
-      <a href="#carrinho" class="botao produto-botao">
+      <button
+        type="button"
+        class="botao produto-botao"
+        (click)="adicionarCarrinho(produto)">
         Adicionar à cesta
-      </a>
+      </button>
 
     </div>
 
+  </div>
 
-    
+  <p *ngIf="produtosFiltrados.length === 0">
+    Nenhum produto encontrado.
+  </p>
 
-    <div class="produto">
+</section>
 
-      <div class="produto-imagem azul">
-        🧴
-      </div>
 
-      <span class="produto-tag">
-        Oferta
-      </span>
+<section class="secao" id="carrinho">
 
-      <h3>Shampoo</h3>
-
-      <p>Shampoo para uso diário</p>
-
-      <strong>R$ 24,90</strong>
-
-      <a href="#carrinho" class="botao produto-botao">
-        Adicionar à cesta
-      </a>
-
+  <div class="titulo-secao">
+    <div>
+      <span>SUAS COMPRAS</span>
+      <h2>Minha Cesta</h2>
     </div>
+  </div>
+
+  <p *ngIf="carrinho.length === 0">
+    Sua cesta está vazia.
+  </p>
+
+  <div *ngFor="let item of carrinho"
+       style="padding: 12px 0; border-bottom: 1px solid #ddd;">
+
+    <strong>{{ item.nome }}</strong>
+
+    <p>
+      {{ item.preco | currency:'BRL' }}
+      — Quantidade: {{ item.quantidade }}
+    </p>
+
+    <button type="button" (click)="removerCarrinho(item.id)">
+      Remover uma unidade
+    </button>
+
+  </div>
+
+  <div *ngIf="carrinho.length > 0"
+       style="margin-top: 20px;">
+
+    <h3>Total: {{ totalCarrinho | currency:'BRL' }}</h3>
+
+    <button type="button"
+            class="botao"
+            (click)="finalizarPedido()">
+      Finalizar pedido
+    </button>
+
+  </div>
+
+</section>
 
 
-    
+<section class="secao" id="pedidos">
 
-    <div class="produto">
-
-      <div class="produto-imagem rosa">
-        🧼
-      </div>
-
-      <span class="produto-tag">
-        Destaque
-      </span>
-
-      <h3>Sabonete</h3>
-
-      <p>Sabonete líquido</p>
-
-      <strong>R$ 12,90</strong>
-
-      <a href="#carrinho" class="botao produto-botao">
-        Adicionar à cesta
-      </a>
-
+  <div class="titulo-secao">
+    <div>
+      <span>ACOMPANHAMENTO</span>
+      <h2>Meus Pedidos</h2>
     </div>
+  </div>
 
+  <p *ngIf="pedidos.length === 0">
+    Você ainda não realizou nenhum pedido.
+  </p>
 
-    
+  <div *ngFor="let pedido of pedidos"
+       style="padding: 16px 0; border-bottom: 1px solid #ddd;">
 
-    <div class="produto">
+    <h3>Pedido #{{ pedido.numero }}</h3>
 
-      <div class="produto-imagem amarelo">
-        💚
-      </div>
+    <p>Data: {{ pedido.data }}</p>
 
-      <span class="produto-tag">
-        Novidade
-      </span>
+    <p>Itens: {{ pedido.itens }}</p>
 
-      <h3>Multivitamínico</h3>
+    <strong>
+      Total: {{ pedido.total | currency:'BRL' }}
+    </strong>
 
-      <p>Suplemento vitamínico</p>
-
-      <strong>R$ 39,90</strong>
-
-      <a href="#carrinho" class="botao produto-botao">
-        Adicionar à cesta
-      </a>
-
-    </div>
+    <p>Status: Pedido recebido</p>
 
   </div>
 

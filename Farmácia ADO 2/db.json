@@ -1,0 +1,33 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Vitamina C",
+      "descricao": "Vitamina C 1000mg",
+      "preco": 19.9,
+      "categoria": "Vitaminas"
+    },
+    {
+      "id": "2",
+      "nome": "Shampoo",
+      "descricao": "Shampoo para uso diário",
+      "preco": 24.9,
+      "categoria": "Higiene"
+    },
+    {
+      "id": "3",
+      "nome": "Sabonete",
+      "descricao": "Sabonete líquido",
+      "preco": 12.9,
+      "categoria": "Higiene"
+    },
+    {
+      "id": "4",
+      "nome": "Multivitamínico",
+      "descricao": "Suplemento vitamínico",
+      "preco": 39.9,
+      "categoria": "Vitaminas"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

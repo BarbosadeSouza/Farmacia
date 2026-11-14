@@ -1,6 +1,8 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +12,26 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.css'
 })
 export class LoginComponent {
- 
+
   email: string = '';
   senha: string = '';
-
- 
   erroSenha: string = '';
-
 
   private regexSenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-  
-  fazerLogin(): void {
-    this.erroSenha = ''; 
+  constructor(private router: Router) {}
 
+  fazerLogin(): void {
+    this.erroSenha = '';
+
+    // Verifica se é o administrador
+    if (this.email === 'admin' && this.senha === 'admin123') {
+      sessionStorage.setItem('adminLogado', 'true');
+      this.router.navigate(['/gerenciamento']);
+      return;
+    }
+
+    // Validação para os outros usuários
     if (!this.validarSenha(this.senha)) {
       this.erroSenha = 'A senha deve conter no mínimo 8 caracteres, com pelo menos uma letra e um número.';
       return;
@@ -34,17 +42,14 @@ export class LoginComponent {
     }
   }
 
-  
   validarSenha(senha: string): boolean {
     return this.regexSenha.test(senha);
   }
 
-  
   esqueciSenha(): void {
     console.log('Redirecionar ou abrir modal de recuperação de senha');
   }
 
-  
   criarConta(): void {
     console.log('Redirecionar ou abrir modal de registo');
   }

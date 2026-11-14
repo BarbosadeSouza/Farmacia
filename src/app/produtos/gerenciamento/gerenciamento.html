@@ -1,0 +1,156 @@
+<div class="gerenciamento-container">
+
+  <div class="barra-admin">
+    <span>Área administrativa — FarmaVida</span>
+
+    <button
+      type="button"
+      class="botao-sair"
+      (click)="sair()">
+      Sair da administração
+    </button>
+  </div>
+
+  <h1>Gerenciamento de Produtos</h1>
+
+  <p class="subtitulo">
+    Cadastre, edite e gerencie os produtos da FarmaVida.
+  </p>
+
+  <div class="formulario">
+
+    <h2>
+      {{ editando ? 'Editar Produto' : 'Cadastrar Novo Produto' }}
+    </h2>
+
+    <form (ngSubmit)="salvarProduto()">
+
+      <div class="campo">
+        <label for="nome">Nome do produto</label>
+        <input
+          id="nome"
+          type="text"
+          name="nome"
+          [(ngModel)]="produto.nome"
+          placeholder="Digite o nome do produto"
+          required>
+      </div>
+
+      <div class="campo">
+        <label for="descricao">Descrição</label>
+        <input
+          id="descricao"
+          type="text"
+          name="descricao"
+          [(ngModel)]="produto.descricao"
+          placeholder="Digite a descrição"
+          required>
+      </div>
+
+      <div class="campo">
+        <label for="preco">Preço</label>
+        <input
+          id="preco"
+          type="number"
+          name="preco"
+          [(ngModel)]="produto.preco"
+          min="0.01"
+          step="0.01"
+          required>
+      </div>
+
+      <div class="campo">
+        <label for="categoria">Categoria</label>
+        <select
+          id="categoria"
+          name="categoria"
+          [(ngModel)]="produto.categoria"
+          required>
+
+          <option value="">Selecione uma categoria</option>
+          <option value="Medicamentos">Medicamentos</option>
+          <option value="Higiene">Higiene</option>
+          <option value="Beleza">Beleza</option>
+          <option value="Vitaminas">Vitaminas</option>
+
+        </select>
+      </div>
+
+      <div class="botoes-formulario">
+
+        <button type="submit" class="botao-salvar">
+          {{ editando ? 'Salvar Alterações' : 'Cadastrar Produto' }}
+        </button>
+
+        <button
+          *ngIf="editando"
+          type="button"
+          class="botao-cancelar"
+          (click)="limparFormulario()">
+          Cancelar
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="lista-produtos">
+
+    <h2>Produtos Cadastrados</h2>
+
+    <p *ngIf="produtos.length === 0">
+      Nenhum produto cadastrado.
+    </p>
+
+    <div class="tabela-responsiva">
+
+      <table *ngIf="produtos.length > 0">
+
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of produtos">
+
+            <td>{{ item.nome }}</td>
+            <td>{{ item.descricao }}</td>
+            <td>{{ item.categoria }}</td>
+            <td>{{ item.preco | currency:'BRL' }}</td>
+
+            <td class="acoes-produto">
+
+              <button
+                type="button"
+                class="botao-editar"
+                (click)="editarProduto(item)">
+                Editar
+              </button>
+
+              <button
+                type="button"
+                class="botao-excluir"
+                (click)="excluirProduto(item.id!)">
+                Excluir
+              </button>
+
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
