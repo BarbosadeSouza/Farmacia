@@ -15,26 +15,8 @@
       "id": "UjZrpZRhNDI"
     }
   ],
-  "usuarios": [
-    {
-      "email": "cliente.teste@example.com",
-      "nome": "Cliente Teste",
-      "id": "Y-4VFvLvQXY"
-    }
-  ],
-  "pedidos": [
-    {
-      "status": "Pendente",
-      "usuarioId": "Y-4VFvLvQXY",
-      "produtos": [
-        {
-          "produtoId": "1",
-          "quantidade": 2
-        }
-      ],
-      "total": 25.8,
-      "id": "jbtbULbNF9c"
-    }
-  ],
+  "usuarios": [ ],
+
+  "pedidos": [ ],
   "$schema": "./node_modules/json-server/schema.json"
 }
