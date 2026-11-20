@@ -1,0 +1,40 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Dipirona 500mg",
+      "preco": 12.9,
+      "categoria": "Medicamentos",
+      "estoque": 50
+    },
+    {
+      "categoria": "Medicamentos",
+      "nome": "Paracetamol 750mg",
+      "estoque": 30,
+      "preco": 15.9,
+      "id": "UjZrpZRhNDI"
+    }
+  ],
+  "usuarios": [
+    {
+      "email": "cliente.teste@example.com",
+      "nome": "Cliente Teste",
+      "id": "Y-4VFvLvQXY"
+    }
+  ],
+  "pedidos": [
+    {
+      "status": "Pendente",
+      "usuarioId": "Y-4VFvLvQXY",
+      "produtos": [
+        {
+          "produtoId": "1",
+          "quantidade": 2
+        }
+      ],
+      "total": 25.8,
+      "id": "jbtbULbNF9c"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
