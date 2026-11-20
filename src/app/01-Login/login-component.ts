@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+interface Usuario {
+  id?: string;
+  nome: string;
+  email: string;
+  senha: string;
+}
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -13,39 +21,123 @@ export class LoginComponent {
 
   email: string = '';
   senha: string = '';
-
-
   erroSenha: string = '';
+  carregando: boolean = false;
 
+  private apiUrl = 'http://localhost:3000/usuarios';
 
-  private regexSenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   fazerLogin(): void {
+
     this.erroSenha = '';
 
-    if (!this.validarSenha(this.senha)) {
-      this.erroSenha = 'A senha deve conter no mínimo 8 caracteres, com pelo menos uma letra e um número.';
+    if (this.carregando) {
       return;
     }
 
-    if (this.email && this.senha) {
-      console.log('Login realizado para:', this.email);
+    const email = this.email.trim().toLowerCase();
+
+    if (!email || !this.senha) {
+      this.erroSenha = 'Preencha o e-mail e a senha.';
+      return;
     }
+
+    this.carregando = true;
+
+    this.http.get<Usuario[]>(this.apiUrl, {
+      params: { email }
+    }).subscribe({
+
+      next: (usuarios) => {
+
+        const usuario = usuarios.find(u =>
+          u.email.toLowerCase() === email &&
+          u.senha === this.senha
+        );
+
+        this.carregando = false;
+
+        if (usuario) {
+          alert('Login realizado com sucesso!');
+          this.router.navigate(['/home']);
+        } else {
+          this.erroSenha = 'E-mail ou senha incorretos.';
+        }
+
+        this.cdr.markForCheck();
+      },
+
+      error: () => {
+        this.erroSenha = 'Erro ao conectar com a API.';
+        this.carregando = false;
+        this.cdr.markForCheck();
+      }
+
+    });
   }
 
+esqueciSenha(): void {
+  const email = prompt('Digite seu e-mail cadastrado:');
 
-  validarSenha(senha: string): boolean {
-    return this.regexSenha.test(senha);
+  if (!email) {
+    return;
   }
 
+  this.http.get<Usuario[]>(this.apiUrl).subscribe({
+    next: (usuarios) => {
 
-  esqueciSenha(): void {
-    console.log('Redirecionar ou abrir modal de recuperação de senha');
-  }
+      const usuario = usuarios.find(
+        u => u.email.toLowerCase() === email.trim().toLowerCase()
+      );
 
+      if (!usuario || !usuario.id) {
+        alert('E-mail não cadastrado.');
+        return;
+      }
+
+      const novaSenha = prompt('Digite sua nova senha:');
+
+      if (!novaSenha || novaSenha.length < 8) {
+        alert('A senha deve ter pelo menos 8 caracteres.');
+        return;
+      }
+
+      const confirmarSenha = prompt('Confirme sua nova senha:');
+
+      if (novaSenha !== confirmarSenha) {
+        alert('As senhas não são iguais.');
+        return;
+      }
+
+      const usuarioAtualizado: Usuario = {
+        ...usuario,
+        senha: novaSenha
+      };
+
+      this.http.put<Usuario>(
+        `${this.apiUrl}/${usuario.id}`,
+        usuarioAtualizado
+      ).subscribe({
+        next: () => {
+          alert('Senha alterada com sucesso!');
+        },
+        error: () => {
+          alert('Erro ao atualizar a senha.');
+        }
+      });
+    },
+    error: () => {
+      alert('Erro ao conectar com a API.');
+    }
+  });
+}
 
   criarConta(): void {
-    console.log('Redirecionar ou abrir modal de registo');
+    this.router.navigate(['/cadastro']);
   }
 }

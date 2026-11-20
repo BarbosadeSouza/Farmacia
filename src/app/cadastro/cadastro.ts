@@ -50,8 +50,8 @@ export class Cadastro {
       return;
     }
 
-    if (this.senha.length < 6) {
-      this.mensagem = 'A senha deve ter pelo menos 6 caracteres.';
+    if (this.senha.length < 8) {
+      this.mensagem = 'A senha deve ter pelo menos 8 caracteres.';
       return;
     }
 
