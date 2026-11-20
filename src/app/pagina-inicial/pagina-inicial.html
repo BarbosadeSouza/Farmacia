@@ -206,7 +206,8 @@
       title="Vitamina C"
       description="Vitamina C 500mg"
       price="R$ 19,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Vitamina C', 19.90)">
     </app-produto>
 
 
@@ -217,7 +218,8 @@
       title="Shampoo"
       description="Shampoo para uso diário"
       price="R$ 24,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Shampoo', 24.90)">
     </app-produto>
 
 
@@ -228,7 +230,8 @@
       title="Sabonete"
       description="Sabonete líquido"
       price="R$ 12,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Sabonete', 12.90)">
     </app-produto>
 
 
@@ -239,8 +242,49 @@
       title="Mutivitamínico"
       description="Suplemento vitamínico"
       price="R$ 39,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Mutivitamínico', 39.90)">
     </app-produto>
 
   </div>
+</section>
+
+<section class="secao" id="carrinho">
+  <div class="titulo-secao">
+    <div>
+      <span>SUA CESTA</span>
+      <h2>Carrinho de Compras</h2>
+    </div>
+  </div>
+
+  @if (carrinho.length === 0) {
+    <p>Sua cesta está vazia. Clique em "Adicionar à cesta" em um dos produtos acima.</p>
+  } @else {
+    <div style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      @for (item of carrinho; track item.nome; let i = $index) {
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee;">
+          <div>
+            <strong>{{ item.nome }}</strong>
+            <span> — {{ item.quantidade }}x R$ {{ item.preco.toFixed(2) }}</span>
+          </div>
+          <button type="button" (click)="removerItem(i)" style="background: #dc3545; color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer;">
+            Remover
+          </button>
+        </div>
+      }
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+        <h3>Total: R$ {{ total.toFixed(2) }}</h3>
+        <button type="button" (click)="finalizarVenda()" [disabled]="carregando" class="botao" style="border: none; cursor: pointer;">
+          {{ carregando ? 'Finalizando...' : 'Finalizar Compra' }}
+        </button>
+      </div>
+    </div>
+  }
+
+  @if (mensagem) {
+    <p [style.color]="sucesso ? 'green' : 'red'" style="margin-top: 15px; font-weight: bold;">
+      {{ mensagem }}
+    </p>
+  }
 </section>
