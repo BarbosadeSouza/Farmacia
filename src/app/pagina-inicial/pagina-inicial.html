@@ -1,4 +1,3 @@
-
 <section class="banner">
 
   <div class="banner-texto">
@@ -16,7 +15,7 @@
       para cuidar de você e da sua família.
     </p>
 
-    <a href="#produtos" class="botao">
+    <a routerLink="/produtos" class="botao">
       Comprar agora
     </a>
 
@@ -53,7 +52,7 @@
       <h2>Compre por categoria</h2>
     </div>
 
-    <a href="#categorias">
+    <a routerLink="/categorias">
       Ver todas →
     </a>
 
@@ -61,7 +60,7 @@
 
   <div class="categorias">
 
-    <a href="#medicamentos" class="categoria">
+    <a routerLink="/medicamentos" class="categoria">
 
       <div class="categoria-icone medicamento">
         <i class="bi bi-capsule"></i>
@@ -72,7 +71,7 @@
 
     </a>
 
-    <a href="#higiene" class="categoria">
+    <a routerLink="/higiene" class="categoria">
 
       <div class="categoria-icone higiene">
         <i class="bi bi-droplet-half"></i>
@@ -83,7 +82,7 @@
 
     </a>
 
-    <a href="#beleza" class="categoria">
+    <a routerLink="/beleza" class="categoria">
 
       <div class="categoria-icone beleza">
         <i class="bi bi-stars"></i>
@@ -94,7 +93,7 @@
 
     </a>
 
-    <a href="#vitaminas" class="categoria">
+    <a routerLink="/vitaminas" class="categoria">
 
       <div class="categoria-icone vitaminas">
         <i class="bi bi-heart-pulse"></i>
@@ -126,7 +125,7 @@
       com preços especiais.
     </p>
 
-    <a href="#produtos" class="botao botao-branco">
+    <a routerLink="/ofertas" class="botao botao-branco">
       Ver ofertas
     </a>
 
@@ -162,9 +161,9 @@
       <h2>Produtos populares</h2>
     </div>
 
-<a routerLink="/produtos">
-  Ver todos →
-</a>
+    <a routerLink="/produtos">
+      Ver todos →
+    </a>
 
   </div>
 
@@ -175,7 +174,7 @@
       imageContent="bi-capsule"
       tag="Mais vendido"
       title="Vitamina C"
-      description="Vitamina C 500mg"
+      description="Suplemento vitamínico"
       price="R$ 19,90"
       buttonLink="#carrinho"
       (adicionar)="adicionarAoCarrinho('Vitamina C', 19.90)">
@@ -196,22 +195,22 @@
       imageClass="rosa"
       imageContent="bi-stars"
       tag="Oferta"
-      title="Sabonete"
+      title="Sabonete Líquido"
       description="Sabonete líquido"
       price="R$ 12,90"
       buttonLink="#carrinho"
-      (adicionar)="adicionarAoCarrinho('Sabonete', 12.90)">
+      (adicionar)="adicionarAoCarrinho('Sabonete Líquido', 12.90)">
     </app-produto>
 
     <app-produto
       imageClass="amarelo"
       imageContent="bi-heart-pulse"
       tag="Novidade"
-      title="Mutivitamínico"
+      title="Multivitamínico"
       description="Suplemento vitamínico"
       price="R$ 39,90"
       buttonLink="#carrinho"
-      (adicionar)="adicionarAoCarrinho('Mutivitamínico', 39.90)">
+      (adicionar)="adicionarAoCarrinho('Multivitamínico', 39.90)">
     </app-produto>
 
   </div>

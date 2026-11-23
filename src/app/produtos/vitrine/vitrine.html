@@ -7,13 +7,11 @@
   } @else if (busca) {
 
     <section class="categoria">
-
       <div class="categoria-header">
         <h3>Resultados para: {{ busca }}</h3>
       </div>
 
       <div class="produtos">
-
         @for (produto of produtos; track produto.id) {
           <app-produto
             imageClass="verde"
@@ -21,28 +19,23 @@
             [title]="produto.nome"
             [description]="produto.categoria"
             [price]="'R$ ' + produto.preco.toFixed(2).replace('.', ',')"
-            buttonLink="#carrinho">
+            (adicionar)="carrinho.adicionar(produto.nome, produto.preco)">
           </app-produto>
         } @empty {
           <p>Nenhum produto encontrado.</p>
         }
-
       </div>
-
     </section>
 
   } @else {
 
     @for (categoria of categorias; track categoria) {
-
       <section class="categoria">
-
         <div class="categoria-header">
           <h3>{{ categoria }}</h3>
         </div>
 
         <div class="produtos">
-
           @for (produto of produtosPorCategoria(categoria); track produto.id) {
             <app-produto
               imageClass="verde"
@@ -50,16 +43,13 @@
               [title]="produto.nome"
               [description]="produto.categoria"
               [price]="'R$ ' + produto.preco.toFixed(2).replace('.', ',')"
-              buttonLink="#carrinho">
+              (adicionar)="carrinho.adicionar(produto.nome, produto.preco)">
             </app-produto>
           } @empty {
             <p>Nenhum produto nesta categoria.</p>
           }
-
         </div>
-
       </section>
-
     }
 
   }

@@ -2,6 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Produto } from '../produto/produto';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Carrinho } from '../../services/carrinho';
 
 @Component({
   standalone: true,
@@ -22,7 +23,8 @@ export class Vitrine {
   constructor(
     private http: HttpClient,
     private rota: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public carrinho: Carrinho
   ) {
     this.rota.queryParams.subscribe(params => {
       this.busca = params['busca'] || '';
