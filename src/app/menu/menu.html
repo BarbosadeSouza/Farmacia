@@ -6,17 +6,24 @@
     <a [routerLink]="['/home']" class="logo-link">FarmaVida</a>
   </div>
 
-  <!-- Pesquisa -->
-  <div class="pesquisa">
-    <input
-      type="text"
-      placeholder="Buscar produtos na FarmaVida"
-    >
+<!-- Pesquisa -->
+<div class="pesquisa">
+  <input
+    type="text"
+    placeholder="Buscar produtos na FarmaVida"
+    aria-label="Buscar produtos"
+    #campoBusca
+    (keyup.enter)="buscar(campoBusca.value)"
+  >
 
-    <button>
-      <i class="bi bi-search"></i>
-    </button>
-  </div>
+  <button
+    type="button"
+    aria-label="Pesquisar"
+    (click)="buscar(campoBusca.value)"
+  >
+    <i class="bi bi-search"></i>
+  </button>
+</div>
 
   <!-- Ações -->
   <div class="acoes">

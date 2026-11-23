@@ -1,4 +1,36 @@
 <div class="container">
+  @if (busca) {
+    <section class="categoria">
+
+      <div class="categoria-header">
+        <h3>Resultados para: {{ busca }}</h3>
+      </div>
+
+      @if (carregando) {
+        <p>Carregando produtos...</p>
+      } @else if (erro) {
+        <p>Erro ao carregar os produtos.</p>
+      } @else {
+        <div class="produtos">
+
+          @for (produto of produtos; track produto.id) {
+            <app-produto
+              imageClass="verde"
+              imageContent="bi-capsule"
+              [title]="produto.nome"
+              [description]="produto.categoria"
+              [price]="'R$ ' + produto.preco.toFixed(2).replace('.', ',')"
+              buttonLink="#carrinho">
+            </app-produto>
+          } @empty {
+            <p>Nenhum produto encontrado.</p>
+          }
+
+        </div>
+      }
+
+    </section>
+  } @else {
 
   <section class="categoria">
     <div class="categoria-header">
@@ -51,5 +83,5 @@
       <app-produto imageClass="amarelo" imageContent="bi-heart-pulse" tag="Novidade" title="Multivitamínico" description="Suplemento vitamínico" price="R$ 39,90" buttonLink="#carrinho"></app-produto>
     </div>
 </section>
-
+  }
 </div>
