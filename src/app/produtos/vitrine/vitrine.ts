@@ -1,4 +1,3 @@
-
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Produto } from '../produto/produto';
 import { HttpClient } from '@angular/common/http';
@@ -18,6 +17,8 @@ export class Vitrine {
   erro = false;
   carregando = false;
 
+  categorias = ['Medicamentos', 'Higiene', 'Beleza', 'Vitaminas'];
+
   constructor(
     private http: HttpClient,
     private rota: ActivatedRoute,
@@ -30,11 +31,8 @@ export class Vitrine {
   }
 
   buscarProdutos(): void {
-    this.produtos = [];
     this.erro = false;
-    this.carregando = !!this.busca;
-
-    if (!this.busca) return;
+    this.carregando = true;
 
     const termo = this.busca;
 
@@ -58,5 +56,11 @@ export class Vitrine {
           this.cdr.detectChanges();
         }
       });
+  }
+
+  produtosPorCategoria(categoria: string) {
+    return this.produtos.filter(produto =>
+      produto.categoria.toLowerCase() === categoria.toLowerCase()
+    );
   }
 }

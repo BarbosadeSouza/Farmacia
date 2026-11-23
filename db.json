@@ -56,5 +56,8 @@
     "categoria": "Vitaminas",
     "estoque": 0
     }
-  ]
+  ],
+  "usuarios": [],
+  "pedidos": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }
