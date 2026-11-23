@@ -18,49 +18,49 @@ export class Categorias {
       nome: 'Dipirona 500mg',
       preco: 12.90,
       categoria: 'medicamentos',
-      imagem: '/assets/produtos/dipirona.jpg'
+      imagem: 'assets/produtos/dipirona.jpg'
     },
     {
       nome: 'Paracetamol 750mg',
       preco: 15.90,
       categoria: 'medicamentos',
-      imagem: '/assets/produtos/paracetamol.jpg'
+      imagem: 'assets/produtos/paracetamol.jpg'
     },
     {
       nome: 'Shampoo',
       preco: 24.90,
       categoria: 'higiene',
-      imagem: '/assets/produtos/shampoo.jpg'
+      imagem: 'assets/produtos/shampoo.jpg'
     },
     {
       nome: 'Sabonete Líquido',
       preco: 12.90,
       categoria: 'higiene',
-      imagem: '/assets/produtos/sabonete.jpg'
+      imagem: 'assets/produtos/sabonete.jpg'
     },
     {
       nome: 'Creme Hidratante',
       preco: 29.90,
       categoria: 'beleza',
-      imagem: '/assets/produtos/hidratante.jpg'
+      imagem: 'assets/produtos/hidratante.jpg'
     },
     {
       nome: 'Protetor Solar',
       preco: 39.90,
       categoria: 'beleza',
-      imagem: '/assets/produtos/protetor.jpg'
+      imagem: 'assets/produtos/protetor.jpg'
     },
     {
       nome: 'Vitamina C',
       preco: 19.90,
       categoria: 'vitaminas',
-      imagem: '/assets/produtos/vitamina-c.jpg'
+      imagem: 'assets/produtos/vitamina-c.jpg'
     },
     {
       nome: 'Multivitamínico',
       preco: 39.90,
       categoria: 'vitaminas',
-      imagem: '/assets/produtos/multivitaminico.jpg'
+      imagem: 'assets/produtos/multivitaminico.jpg'
     }
   ];
 
