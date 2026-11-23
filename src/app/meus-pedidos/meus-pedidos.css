@@ -1,0 +1,148 @@
+
+.pagina-pedidos {
+  min-height: 75vh;
+  background: #f7fafa;
+  padding: 45px 20px 70px;
+  font-family: Arial, sans-serif;
+}
+
+.topo-pedidos {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.topo-pedidos span {
+  color: #07877e;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.topo-pedidos h1 {
+  color: #075f59;
+  font-size: 34px;
+  margin: 12px 0;
+}
+
+.topo-pedidos p {
+  color: #777;
+}
+
+.conteudo-pedidos {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mensagem {
+  text-align: center;
+  color: #666;
+  padding: 30px;
+}
+
+.erro {
+  color: #dc3545;
+}
+
+.sem-pedidos {
+  background: white;
+  border-radius: 15px;
+  padding: 55px 25px;
+  text-align: center;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+.sem-pedidos h2 {
+  color: #075f59;
+}
+
+.sem-pedidos p {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.botao-comprar {
+  display: inline-block;
+  padding: 13px 25px;
+  background: #07877e;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pedido-card {
+  background: white;
+  border: 1px solid #e5eeee;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.pedido-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 22px;
+  border-bottom: 1px solid #eee;
+}
+
+.pedido-cabecalho h2 {
+  color: #075f59;
+  font-size: 19px;
+  margin: 0 0 6px;
+}
+
+.pedido-cabecalho p {
+  color: #888;
+  font-size: 13px;
+  margin: 0;
+}
+
+.status-pedido {
+  background: #e0f4ef;
+  color: #07877e;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.pedido-produtos {
+  padding: 10px 22px;
+}
+
+.pedido-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.pedido-item p {
+  color: #888;
+  font-size: 13px;
+}
+
+.pedido-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 22px;
+  background: #f2faf8;
+  color: #075f59;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .pedido-cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pedido-total {
+    font-size: 16px;
+  }
+}

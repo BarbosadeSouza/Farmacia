@@ -1,0 +1,82 @@
+
+<section class="pagina-pedidos">
+
+  <div class="topo-pedidos">
+    <span>FARMAVIDA</span>
+    <h1>Meus Pedidos</h1>
+    <p>Acompanhe suas compras realizadas.</p>
+  </div>
+
+  <div class="conteudo-pedidos">
+
+    @if (carregando) {
+
+      <p class="mensagem">Carregando pedidos...</p>
+
+    } @else if (erro) {
+
+      <p class="mensagem erro">{{ erro }}</p>
+
+    } @else if (pedidos.length === 0) {
+
+      <div class="sem-pedidos">
+        <h2>Você ainda não fez nenhum pedido.</h2>
+        <p>Explore nossos produtos e faça sua primeira compra!</p>
+
+        <a routerLink="/categorias" class="botao-comprar">
+          Ver produtos
+        </a>
+      </div>
+
+    } @else {
+
+      @for (pedido of pedidos; track pedido.id ?? $index) {
+
+        <div class="pedido-card">
+
+          <div class="pedido-cabecalho">
+            <div>
+              <h2>Pedido #{{ pedido.id ?? ($index + 1) }}</h2>
+              <p>{{ pedido.data }}</p>
+            </div>
+
+            <span class="status-pedido">
+              Pedido registrado
+            </span>
+          </div>
+
+          <div class="pedido-produtos">
+
+            @for (item of pedido.itens; track $index) {
+
+              <div class="pedido-item">
+                <div>
+                  <strong>{{ item.nome }}</strong>
+                  <p>Quantidade: {{ item.quantidade }}</p>
+                </div>
+
+                <strong>
+                  R$ {{ (item.preco * item.quantidade).toFixed(2).replace('.', ',') }}
+                </strong>
+              </div>
+
+            }
+
+          </div>
+
+          <div class="pedido-total">
+            <strong>Total do pedido</strong>
+            <strong>
+              R$ {{ pedido.total.toFixed(2).replace('.', ',') }}
+            </strong>
+          </div>
+
+        </div>
+
+      }
+
+    }
+
+  </div>
+
+</section>

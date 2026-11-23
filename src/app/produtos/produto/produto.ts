@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   imports: [],
@@ -16,4 +16,11 @@ export class Produto {
   @Input() price: string = '';
   @Input() buttonLink: string = '';
   @Input() buttonLabel: string = 'Adicionar à cesta';
+
+  @Output() adicionar = new EventEmitter<void>();
+
+  aoClicar(event: Event) {
+    event.preventDefault();
+    this.adicionar.emit();
+  }
 }

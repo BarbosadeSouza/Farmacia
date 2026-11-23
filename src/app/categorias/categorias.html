@@ -1,0 +1,55 @@
+
+<section class="pagina-categorias">
+
+  <div class="topo">
+    <span>FARMAVIDA</span>
+    <h1>{{ titulo }}</h1>
+    <p>Encontre os melhores produtos para cuidar de você.</p>
+  </div>
+
+  <div class="navegacao">
+    <a routerLink="/categorias">Todos</a>
+    <a routerLink="/medicamentos">Medicamentos</a>
+    <a routerLink="/higiene">Higiene</a>
+    <a routerLink="/beleza">Beleza</a>
+    <a routerLink="/vitaminas">Vitaminas</a>
+    <a routerLink="/ofertas">Ofertas</a>
+  </div>
+
+  <div class="lista-produtos">
+
+    @for (produto of produtosFiltrados; track produto.nome) {
+
+      <div class="produto-card">
+
+        <div class="produto-imagem">
+          <img
+            [src]="produto.imagem"
+            [alt]="produto.nome">
+        </div>
+
+        <h3>{{ produto.nome }}</h3>
+
+        <p>{{ produto.categoria }}</p>
+
+        <strong>
+          R$ {{ produto.preco.toFixed(2).replace('.', ',') }}
+        </strong>
+
+        <button
+          type="button"
+          (click)="adicionar(produto.nome, produto.preco)">
+          Adicionar à cesta
+        </button>
+
+      </div>
+
+    } @empty {
+
+      <p>Nenhum produto encontrado nesta categoria.</p>
+
+    }
+
+  </div>
+
+</section>
