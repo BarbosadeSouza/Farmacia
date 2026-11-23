@@ -1,25 +1,24 @@
+
 <header class="header">
 
-  <!-- Logo -->
   <div class="logo">
     <span>+</span>
-    <a [routerLink]="['/home']" class="logo-link">FarmaVida</a>
+    <a routerLink="/home" class="logo-link">FarmaVida</a>
   </div>
 
-  <!-- Pesquisa -->
   <div class="pesquisa">
     <input
       type="text"
       placeholder="Buscar produtos na FarmaVida"
     >
 
-    <button>
+    <button type="button">
       <i class="bi bi-search"></i>
     </button>
   </div>
 
-  <!-- Ações -->
   <div class="acoes">
+
     <a routerLink="/login">
       <i class="bi bi-person icone"></i>
       <div>
@@ -28,7 +27,7 @@
       </div>
     </a>
 
-    <a href="#pedidos">
+    <a routerLink="/meus-pedidos">
       <i class="bi bi-box-seam icone"></i>
       <div>
         <small>Meus</small>
@@ -36,24 +35,28 @@
       </div>
     </a>
 
-    <a href="#carrinho">
+    <button
+      type="button"
+      class="botao-carrinho"
+      (click)="abrirCarrinho()">
+
       <i class="bi bi-cart3 icone"></i>
-      <div>
+
+      <span>
         <small>Minha</small>
         <strong>Cesta</strong>
-      </div>
-    </a>
+      </span>
+
+    </button>
+
   </div>
 
-  <!-- Botão mobile -->
   <button class="menu-mobile-button">
     <i class="bi bi-list"></i>
   </button>
 
 </header>
 
-
-<!-- Menu de navegação -->
 <nav class="menu">
 
   <div class="menu-container">
@@ -67,4 +70,91 @@
     }
 
   </div>
+
 </nav>
+
+@if (carrinho.aberto()) {
+
+  <div
+    class="fundo-carrinho"
+    (click)="fecharCarrinho()">
+  </div>
+
+  <aside class="painel-carrinho">
+
+    <div class="carrinho-topo">
+
+      <h2>Minha Cesta</h2>
+
+      <button
+        type="button"
+        class="carrinho-fechar"
+        (click)="fecharCarrinho()">
+        &times;
+      </button>
+
+    </div>
+
+    <div class="carrinho-conteudo">
+
+      @if (carrinho.itens.length === 0) {
+
+        <p class="carrinho-vazio">
+          Sua cesta está vazia.
+        </p>
+
+      } @else {
+
+        @for (item of carrinho.itens; track item.nome; let i = $index) {
+
+          <div class="carrinho-item">
+
+            <div>
+              <strong>{{ item.nome }}</strong>
+              <p>
+                {{ item.quantidade }}x
+                R$ {{ item.preco.toFixed(2) }}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="carrinho-remover"
+              (click)="carrinho.remover(i)">
+              Remover
+            </button>
+
+          </div>
+
+        }
+
+      }
+
+    </div>
+
+    <div class="carrinho-rodape">
+
+      <div class="carrinho-total">
+        <strong>Total:</strong>
+        <strong>R$ {{ carrinho.total.toFixed(2) }}</strong>
+      </div>
+
+      <button
+        type="button"
+        class="carrinho-finalizar"
+        (click)="carrinho.finalizarCompra()"
+        [disabled]="carrinho.itens.length === 0 || carrinho.carregando">
+        {{ carrinho.carregando ? 'Finalizando...' : 'Finalizar Compra' }}
+      </button>
+
+      @if (carrinho.mensagem) {
+        <p class="mensagem-carrinho">
+          {{ carrinho.mensagem }}
+        </p>
+      }
+
+    </div>
+
+  </aside>
+
+}

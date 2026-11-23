@@ -15,8 +15,46 @@
       "id": "UjZrpZRhNDI"
     }
   ],
-  "usuarios": [ ],
-
-  "pedidos": [ ],
+  "usuarios": [
+    {
+      "nome": "Arthur Teste",
+      "email": "arthurteste@example.com",
+      "senha": "Teste1234",
+      "id": "y1Wer-ziiE0"
+    }
+  ],
+  "pedidos": [
+    {
+      "usuarioId": "y1Wer-ziiE0",
+      "itens": [
+        {
+          "nome": "Vitamina C",
+          "preco": 19.9,
+          "quantidade": 1
+        }
+      ],
+      "total": 19.9,
+      "data": "23/11/2026, 15:15:25",
+      "id": "OI6GWi9S8Vs"
+    },
+    {
+      "usuarioId": "y1Wer-ziiE0",
+      "itens": [
+        {
+          "nome": "Shampoo",
+          "preco": 24.9,
+          "quantidade": 1
+        },
+        {
+          "nome": "Sabonete",
+          "preco": 12.9,
+          "quantidade": 1
+        }
+      ],
+      "total": 37.8,
+      "data": "23/11/2026, 15:18:23",
+      "id": "H3RD5-bzFts"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

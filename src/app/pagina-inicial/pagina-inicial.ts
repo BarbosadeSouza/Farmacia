@@ -1,14 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { Produto } from '../produtos/produto/produto';
-
-interface ItemCarrinho {
-  nome: string;
-  preco: number;
-  quantidade: number;
-}
+import { Carrinho } from '../services/carrinho';
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -18,66 +13,38 @@ interface ItemCarrinho {
   styleUrl: './pagina-inicial.css'
 })
 export class PaginaInicial {
-  carrinho: ItemCarrinho[] = [];
-  mensagem = '';
-  sucesso = false;
-  carregando = false;
 
-  private apiUrl = 'http://localhost:3000/pedidos';
+  constructor(public servicoCarrinho: Carrinho) {}
 
-  constructor(
-    private http: HttpClient,
-    private cdr: ChangeDetectorRef
-  ) {}
-
-  adicionarAoCarrinho(nome: string, preco: number) {
-    this.mensagem = '';
-    const existente = this.carrinho.find(item => item.nome === nome);
-
-    if (existente) {
-      existente.quantidade++;
-    } else {
-      this.carrinho.push({ nome, preco, quantidade: 1 });
-    }
-  }
-
-  removerItem(index: number) {
-    this.carrinho.splice(index, 1);
+  get carrinho() {
+    return this.servicoCarrinho.itens;
   }
 
   get total(): number {
-    return this.carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+    return this.servicoCarrinho.total;
+  }
+
+  adicionarAoCarrinho(nome: string, preco: number) {
+    this.servicoCarrinho.adicionar(nome, preco);
+  }
+
+  removerItem(index: number) {
+    this.servicoCarrinho.remover(index);
   }
 
   finalizarVenda() {
-    if (this.carrinho.length === 0 || this.carregando) {
-      return;
-    }
+    this.servicoCarrinho.finalizarCompra();
+  }
 
-    this.carregando = true;
-    this.mensagem = '';
-    this.sucesso = false;
+  get mensagem(): string {
+    return this.servicoCarrinho.mensagem;
+  }
 
-    const pedido = {
-      itens: this.carrinho,
-      total: Number(this.total.toFixed(2)),
-      data: new Date().toLocaleString('pt-BR')
-    };
+  get carregando(): boolean {
+    return this.servicoCarrinho.carregando;
+  }
 
-    this.http.post(this.apiUrl, pedido).subscribe({
-      next: () => {
-        this.carregando = false;
-        this.sucesso = true;
-        this.mensagem = 'Compra finalizada e registrada com sucesso!';
-        this.carrinho = [];
-        this.cdr.detectChanges();
-      },
-      error: () => {
-        this.carregando = false;
-        this.sucesso = false;
-        this.mensagem = 'Erro ao finalizar venda. Verifique se o json-server está rodando na porta 3000.';
-        this.cdr.detectChanges();
-      }
-    });
+  get sucesso(): boolean {
+    return this.mensagem === 'Compra finalizada com sucesso!';
   }
 }

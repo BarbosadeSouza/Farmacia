@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface Usuario {
   id?: string;
@@ -28,10 +29,12 @@ export class Cadastro {
   carregando = false;
 
   private apiUrl = 'http://localhost:3000/usuarios';
+  private regexSenha = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   constructor(
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   cadastrar() {
@@ -50,8 +53,13 @@ export class Cadastro {
       return;
     }
 
-    if (this.senha.length < 6) {
-      this.mensagem = 'A senha deve ter pelo menos 6 caracteres.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      this.mensagem = 'Digite um e-mail válido.';
+      return;
+    }
+
+    if (!this.regexSenha.test(this.senha)) {
+      this.mensagem = 'A senha deve ter pelo menos 8 caracteres, com uma letra e um número.';
       return;
     }
 
@@ -90,7 +98,7 @@ export class Cadastro {
             this.senha = '';
             this.confirmarSenha = '';
 
-            this.cdr.markForCheck();
+            this.router.navigate(['/login']);
           },
           error: () => {
             this.mensagem = 'Erro ao salvar o cadastro. Tente novamente.';
