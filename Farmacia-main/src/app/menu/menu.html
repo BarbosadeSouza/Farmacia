@@ -1,0 +1,79 @@
+<header class="header">
+
+  <div class="logo">
+    <a routerLink="/home" class="logo-link">
+      <span>+</span>
+      FarmaVida
+    </a>
+  </div>
+
+  <div class="pesquisa">
+    <input
+      type="text"
+      placeholder="Buscar produtos na FarmaVida"
+    >
+
+    <button>
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <div class="acoes">
+
+    @if (primeiroNome) {
+      <a routerLink="/login">
+        <i class="bi bi-person icone"></i>
+        <div>
+          <small>Olá, {{ primeiroNome }}!</small>
+          <strong>Minha conta</strong>
+        </div>
+      </a>
+    } @else {
+      <a routerLink="/login">
+        <i class="bi bi-person icone"></i>
+        <div>
+          <small>Olá!</small>
+          <strong>Entrar ou cadastrar</strong>
+        </div>
+      </a>
+    }
+
+    <a href="#pedidos">
+      <i class="bi bi-box-seam icone"></i>
+      <div>
+        <small>Meus</small>
+        <strong>Pedidos</strong>
+      </div>
+    </a>
+
+    <a href="#carrinho">
+      <i class="bi bi-cart3 icone"></i>
+      <div>
+        <small>Minha</small>
+        <strong>Cesta</strong>
+      </div>
+    </a>
+
+  </div>
+
+  <button class="menu-mobile-button">
+    <i class="bi bi-list"></i>
+  </button>
+
+</header>
+
+<nav class="menu">
+
+  <div class="menu-container">
+
+    @for (item of itensMenu; track item.rota) {
+      <div class="menu-item">
+        <a [routerLink]="item.rota">
+          {{ item.nome }}
+        </a>
+      </div>
+    }
+
+  </div>
+
+</nav>

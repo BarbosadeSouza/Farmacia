@@ -1,0 +1,9 @@
+@if (!paginaAdmin) {
+  <app-menu></app-menu>
+}
+
+<router-outlet />
+
+@if (!paginaAdmin) {
+  <app-footer></app-footer>
+}

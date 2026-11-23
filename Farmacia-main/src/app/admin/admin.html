@@ -1,0 +1,269 @@
+<div class="admin-container">
+
+  <header class="admin-header">
+
+<a href="/home" class="admin-logo"
+   style="text-decoration: none; color: inherit; cursor: pointer;">
+  <span class="logo-icon">+</span>
+  <div>
+    <h1>FarmaVida</h1>
+    <p>Painel Administrativo</p>
+  </div>
+</a>
+
+    <button type="button" class="btn-sair" (click)="sair()">
+      Sair
+    </button>
+  </header>
+
+  <main class="admin-conteudo">
+
+    <div class="titulo-pagina">
+      <h2>Gerenciamento do Sistema</h2>
+      <p>Gerencie os produtos e usuários cadastrados.</p>
+    </div>
+
+    <section class="resumo">
+      <div class="resumo-card">
+        <h3>Produtos cadastrados</h3>
+        <span>{{ totalProdutos() }}</span>
+        <p>Produtos disponíveis no sistema</p>
+      </div>
+
+      <div class="resumo-card">
+        <h3>Usuários cadastrados</h3>
+        <span>{{ totalUsuarios() }}</span>
+        <p>Clientes registrados no FarmaVida</p>
+      </div>
+    </section>
+
+    @if (mensagemErro) {
+      <p class="mensagem-erro">{{ mensagemErro }}</p>
+    }
+
+    <section class="admin-card">
+
+      <h3>
+        @if (editando) {
+          Editar Produto
+        } @else {
+          Cadastrar Novo Produto
+        }
+      </h3>
+
+      <form (ngSubmit)="salvarProduto()">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="nome">Nome do produto</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              [(ngModel)]="produto.nome"
+              placeholder="Ex: Dipirona 500mg"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <input
+              type="text"
+              id="categoria"
+              name="categoria"
+              [(ngModel)]="produto.categoria"
+              placeholder="Ex: Medicamentos"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="preco">Preço (R$)</label>
+            <input
+              type="number"
+              id="preco"
+              name="preco"
+              [(ngModel)]="produto.preco"
+              min="0.01"
+              step="0.01"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="estoque">Quantidade em estoque</label>
+            <input
+              type="number"
+              id="estoque"
+              name="estoque"
+              [(ngModel)]="produto.estoque"
+              min="0"
+              step="1"
+              required
+            />
+          </div>
+
+        </div>
+
+        <div class="form-botoes">
+
+          <button
+            type="submit"
+            class="btn-salvar"
+            [disabled]="carregando"
+          >
+            @if (carregando) {
+              Salvando...
+            } @else if (editando) {
+              Salvar Alterações
+            } @else {
+              Cadastrar Produto
+            }
+          </button>
+
+          @if (editando) {
+            <button
+              type="button"
+              class="btn-cancelar"
+              (click)="limparFormulario()"
+            >
+              Cancelar Edição
+            </button>
+          }
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <section class="admin-card">
+
+      <div class="secao-titulo">
+        <h3>Produtos Cadastrados</h3>
+
+      </div>
+
+      <div class="tabela-container">
+
+        <table class="admin-tabela">
+
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+              <th>Estoque</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (item of produtos; track item.id) {
+              <tr>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.categoria }}</td>
+                <td>{{ item.preco | currency:'BRL' }}</td>
+                <td>{{ item.estoque }}</td>
+
+                <td>
+                  <div class="acoes">
+
+                    <button
+                      type="button"
+                      class="btn-editar"
+                      (click)="editarProduto(item)"
+                    >
+                      Editar
+                    </button>
+
+                    <button
+                      type="button"
+                      class="btn-excluir"
+                      (click)="excluirProduto(item.id)"
+                    >
+                      Excluir
+                    </button>
+
+                  </div>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="5" class="tabela-vazia">
+                  Nenhum produto cadastrado.
+                </td>
+              </tr>
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <section class="admin-card">
+
+      <div class="secao-titulo">
+        <h3>Usuários Cadastrados</h3>
+
+      </div>
+
+      <div class="tabela-container">
+
+        <table class="admin-tabela">
+
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (usuario of usuarios; track usuario.id) {
+              <tr>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+
+                <td>
+                  <div class="acoes">
+
+                    <button
+                      type="button"
+                      class="btn-excluir"
+                      [disabled]="excluindoUsuario"
+                      (click)="excluirUsuario(usuario)"
+                    >
+                      Excluir
+                    </button>
+
+                  </div>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="3" class="tabela-vazia">
+                  Nenhum usuário cadastrado.
+                </td>
+              </tr>
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>

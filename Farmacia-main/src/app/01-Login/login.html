@@ -1,0 +1,204 @@
+<div class="login-container">
+  <div class="login-card">
+
+    @if (tela === 'login') {
+      <div class="header">
+        <div class="logo">+</div>
+        <h2>FarmaVida</h2>
+        <p>Acesso ao Sistema Farmacêutico</p>
+      </div>
+    }
+
+    @if (tela === 'login') {
+
+      <form (ngSubmit)="fazerLogin()">
+
+        <div class="input-group">
+          <label for="email">E-mail</label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="email"
+            placeholder="usuario@farmacia.com"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <div class="label-row">
+            <label for="senha">Senha</label>
+
+            <a
+              class="forgot-link"
+              (click)="esqueciSenha()">
+              Esqueceu a senha?
+            </a>
+          </div>
+
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            [(ngModel)]="senha"
+            placeholder="••••••••"
+            required
+          />
+
+          @if (erroSenha) {
+            <span class="error-message">
+              {{ erroSenha }}
+            </span>
+          }
+        </div>
+
+        <button
+          type="submit"
+          class="btn-entrar"
+          [disabled]="carregando">
+
+          @if (carregando) {
+            Entrando...
+          } @else {
+            Entrar
+          }
+
+        </button>
+
+        <div class="divider">
+          <span>ou</span>
+        </div>
+
+        <button
+          type="button"
+          class="btn-criar-conta"
+          (click)="criarConta()">
+          Criar nova conta
+        </button>
+
+      </form>
+
+    }
+
+    @else if (tela === 'recuperar') {
+
+      <h3 class="recuperacao-titulo">
+        Recuperar senha
+      </h3>
+
+      <p class="recuperacao-texto">
+        Informe o e-mail utilizado no cadastro.
+      </p>
+
+      <form (ngSubmit)="continuarRecuperacao()">
+
+        <div class="input-group">
+          <label for="emailRecuperacao">E-mail</label>
+
+          <input
+            type="email"
+            id="emailRecuperacao"
+            name="emailRecuperacao"
+            [(ngModel)]="emailRecuperacao"
+            placeholder="Digite seu e-mail"
+            required
+          />
+        </div>
+
+        @if (erroRecuperacao) {
+          <span class="error-message">
+            {{ erroRecuperacao }}
+          </span>
+        }
+
+        <button
+          type="submit"
+          class="btn-entrar">
+          Continuar
+        </button>
+
+        <button
+          type="button"
+          class="btn-criar-conta botao-voltar"
+          (click)="voltarLogin()">
+          Voltar ao login
+        </button>
+
+      </form>
+
+    }
+
+    @else if (tela === 'novaSenha') {
+
+      <h3 class="recuperacao-titulo">
+        Criar nova senha
+      </h3>
+
+      <p class="recuperacao-texto">
+        {{ mensagemRecuperacao }}
+      </p>
+
+      <form (ngSubmit)="salvarNovaSenha()">
+
+        <div class="input-group">
+          <label for="novaSenha">Nova senha</label>
+
+          <input
+            type="password"
+            id="novaSenha"
+            name="novaSenha"
+            [(ngModel)]="novaSenha"
+            placeholder="Mínimo de 8 caracteres"
+            minlength="8"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="confirmarNovaSenha">
+            Confirmar nova senha
+          </label>
+
+          <input
+            type="password"
+            id="confirmarNovaSenha"
+            name="confirmarNovaSenha"
+            [(ngModel)]="confirmarNovaSenha"
+            placeholder="Digite a senha novamente"
+            required
+          />
+        </div>
+
+        @if (erroRecuperacao) {
+          <span class="error-message">
+            {{ erroRecuperacao }}
+          </span>
+        }
+
+        <button
+          type="submit"
+          class="btn-entrar"
+          [disabled]="carregando">
+
+          @if (carregando) {
+            Salvando...
+          } @else {
+            Salvar nova senha
+          }
+
+        </button>
+
+        <button
+          type="button"
+          class="btn-criar-conta botao-voltar"
+          (click)="voltarLogin()">
+          Voltar ao login
+        </button>
+
+      </form>
+
+    }
+
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="produto">
+  <div class="produto-imagem {{imageClass}}">
+    <i class="bi {{imageContent}}"></i>
+  </div>
+
+  @if (tag) {
+    <span class="produto-tag">{{tag}}</span>
+  }
+
+  <h3>{{title}}</h3>
+  <p>{{description}}</p>
+  <strong>{{price}}</strong>
+  <a [href]="buttonLink" class="botao produto-botao">{{buttonLabel}}</a>
+</div>
