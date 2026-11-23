@@ -20,7 +20,6 @@ interface Usuario {
   styleUrl: './login.css'
 })
 export class LoginComponent {
-
   email = '';
   senha = '';
   erroSenha = '';
@@ -38,12 +37,28 @@ export class LoginComponent {
   fazerLogin(): void {
     this.erroSenha = '';
 
+    if (this.carregando) {
+      return;
+    }
+
     const email = this.email.trim().toLowerCase();
 
     if (!email || !this.senha) {
       this.erroSenha = 'Preencha o e-mail e a senha.';
       return;
     }
+
+    // Acesso administrativo para demonstração acadêmica.
+    if (email === 'admin' && this.senha === 'admin123') {
+      sessionStorage.removeItem('usuarioId');
+      sessionStorage.removeItem('usuarioNome');
+      sessionStorage.setItem('adminLogado', 'true');
+
+      this.router.navigate(['/admin']);
+      return;
+    }
+
+    sessionStorage.removeItem('adminLogado');
 
     if (!this.regexSenha.test(this.senha)) {
       this.erroSenha = 'E-mail ou senha inválidos.';
@@ -59,7 +74,7 @@ export class LoginComponent {
         this.carregando = false;
 
         const usuario = usuarios.find(
-          u => u.email === email && u.senha === this.senha
+          u => u.email.toLowerCase() === email && u.senha === this.senha
         );
 
         if (usuario) {

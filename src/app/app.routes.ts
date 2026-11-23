@@ -1,11 +1,15 @@
 
 import { Routes } from '@angular/router';
+
 import { LoginComponent } from './01-Login/login-component';
 import { PaginaInicial } from './pagina-inicial/pagina-inicial';
 import { Vitrine } from './produtos/vitrine/vitrine';
 import { Cadastro } from './cadastro/cadastro';
 import { Categorias } from './categorias/categorias';
 import { MeusPedidos } from './meus-pedidos/meus-pedidos';
+
+import { Admin } from './admin/admin';
+import { adminGuard } from './admin.guard';
 
 export const routes: Routes = [
   {
@@ -20,7 +24,8 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    title: 'Login'
   },
   {
     path: 'produtos',
@@ -66,5 +71,11 @@ export const routes: Routes = [
     path: 'meus-pedidos',
     component: MeusPedidos,
     title: 'Meus Pedidos'
+  },
+  {
+    path: 'admin',
+    component: Admin,
+    canActivate: [adminGuard],
+    title: 'Painel Administrativo - FarmaVida'
   }
 ];
