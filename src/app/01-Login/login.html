@@ -1,13 +1,12 @@
+
 <div class="login-container">
   <div class="login-card">
-
 
     <div class="header">
       <div class="logo">+</div>
       <h2>FarmaVida</h2>
       <p>Acesso ao Sistema Farmacêutico</p>
     </div>
-
 
     <form (ngSubmit)="fazerLogin()">
 
@@ -27,8 +26,13 @@
         <div class="label-row">
           <label for="senha">Senha</label>
 
-          <a type="button" class="forgot-link" (click)="esqueciSenha()">Esqueceu a senha?</a>
+          <a
+            class="forgot-link"
+            (click)="esqueciSenha()">
+            Esqueceu a senha?
+          </a>
         </div>
+
         <input
           type="password"
           id="senha"
@@ -38,18 +42,28 @@
           required
         />
 
-        <span *ngIf="erroSenha" class="error-message">{{ erroSenha }}</span>
+        <span *ngIf="erroSenha" class="error-message">
+          {{ erroSenha }}
+        </span>
       </div>
 
-      <button type="submit" class="btn-entrar">Entrar</button>
-
+      <button
+        type="submit"
+        class="btn-entrar"
+        [disabled]="carregando">
+        {{ carregando ? 'Entrando...' : 'Entrar' }}
+      </button>
 
       <div class="divider">
         <span>ou</span>
       </div>
 
-
-      <button type="button" class="btn-criar-conta" (click)="criarConta()">Criar nova conta</button>
+      <button
+        type="button"
+        class="btn-criar-conta"
+        (click)="criarConta()">
+        Criar nova conta
+      </button>
 
     </form>
 

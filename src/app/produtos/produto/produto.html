@@ -10,5 +10,5 @@
   <h3>{{title}}</h3>
   <p>{{description}}</p>
   <strong>{{price}}</strong>
-  <a [href]="buttonLink" class="botao produto-botao">{{buttonLabel}}</a>
+  <a [href]="buttonLink" (click)="aoClicar($event)" class="botao produto-botao">{{buttonLabel}}</a>
 </div>

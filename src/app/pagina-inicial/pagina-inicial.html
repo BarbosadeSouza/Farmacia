@@ -1,3 +1,4 @@
+
 <section class="banner">
 
   <div class="banner-texto">
@@ -20,7 +21,6 @@
     </a>
 
   </div>
-
 
   <div class="banner-card">
 
@@ -49,11 +49,8 @@
   <div class="titulo-secao">
 
     <div>
-
       <span>ENCONTRE O QUE PRECISA</span>
-
       <h2>Compre por categoria</h2>
-
     </div>
 
     <a href="#categorias">
@@ -61,7 +58,6 @@
     </a>
 
   </div>
-
 
   <div class="categorias">
 
@@ -72,11 +68,9 @@
       </div>
 
       <h3>Medicamentos</h3>
-
       <p>Cuide da sua saúde</p>
 
     </a>
-
 
     <a href="#higiene" class="categoria">
 
@@ -85,11 +79,9 @@
       </div>
 
       <h3>Higiene</h3>
-
       <p>Cuidados diários</p>
 
     </a>
-
 
     <a href="#beleza" class="categoria">
 
@@ -98,11 +90,9 @@
       </div>
 
       <h3>Beleza</h3>
-
       <p>Cuide de você</p>
 
     </a>
-
 
     <a href="#vitaminas" class="categoria">
 
@@ -111,7 +101,6 @@
       </div>
 
       <h3>Vitaminas</h3>
-
       <p>Mais saúde</p>
 
     </a>
@@ -119,7 +108,6 @@
   </div>
 
 </section>
-
 
 <section class="ofertas" id="ofertas">
 
@@ -144,50 +132,34 @@
 
   </div>
 
-
   <div class="oferta-produtos">
 
     <div class="produto-mini">
-
       <span><i class="bi bi-capsule"></i></span>
-
       <strong>Vitaminas</strong>
-
     </div>
 
-
     <div class="produto-mini">
-
       <span><i class="bi bi-droplet-half"></i></span>
-
       <strong>Cuidados</strong>
-
     </div>
 
-
     <div class="produto-mini">
-
       <span><i class="bi bi-stars"></i></span>
-
       <strong>Higiene</strong>
-
     </div>
 
   </div>
 
 </section>
 
-
 <section class="secao" id="produtos">
 
   <div class="titulo-secao">
 
     <div>
-
       <span>DESTAQUES</span>
-
       <h2>Produtos populares</h2>
-
     </div>
 
 <a routerLink="/produtos">
@@ -195,7 +167,6 @@
 </a>
 
   </div>
-
 
   <div class="produtos">
 
@@ -206,9 +177,9 @@
       title="Vitamina C"
       description="Vitamina C 500mg"
       price="R$ 19,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Vitamina C', 19.90)">
     </app-produto>
-
 
     <app-produto
       imageClass="azul"
@@ -217,9 +188,9 @@
       title="Shampoo"
       description="Shampoo para uso diário"
       price="R$ 24,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Shampoo', 24.90)">
     </app-produto>
-
 
     <app-produto
       imageClass="rosa"
@@ -228,9 +199,9 @@
       title="Sabonete"
       description="Sabonete líquido"
       price="R$ 12,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Sabonete', 12.90)">
     </app-produto>
-
 
     <app-produto
       imageClass="amarelo"
@@ -239,8 +210,10 @@
       title="Mutivitamínico"
       description="Suplemento vitamínico"
       price="R$ 39,90"
-      buttonLink="#carrinho">
+      buttonLink="#carrinho"
+      (adicionar)="adicionarAoCarrinho('Mutivitamínico', 39.90)">
     </app-produto>
 
   </div>
+
 </section>
