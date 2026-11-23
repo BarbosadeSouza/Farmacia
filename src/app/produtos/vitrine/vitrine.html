@@ -1,19 +1,49 @@
 <div class="container">
-  @if (busca) {
+
+  @if (carregando) {
+    <p>Carregando produtos...</p>
+  } @else if (erro) {
+    <p>Erro ao carregar os produtos.</p>
+  } @else if (busca) {
+
     <section class="categoria">
 
       <div class="categoria-header">
         <h3>Resultados para: {{ busca }}</h3>
       </div>
 
-      @if (carregando) {
-        <p>Carregando produtos...</p>
-      } @else if (erro) {
-        <p>Erro ao carregar os produtos.</p>
-      } @else {
+      <div class="produtos">
+
+        @for (produto of produtos; track produto.id) {
+          <app-produto
+            imageClass="verde"
+            imageContent="bi-capsule"
+            [title]="produto.nome"
+            [description]="produto.categoria"
+            [price]="'R$ ' + produto.preco.toFixed(2).replace('.', ',')"
+            buttonLink="#carrinho">
+          </app-produto>
+        } @empty {
+          <p>Nenhum produto encontrado.</p>
+        }
+
+      </div>
+
+    </section>
+
+  } @else {
+
+    @for (categoria of categorias; track categoria) {
+
+      <section class="categoria">
+
+        <div class="categoria-header">
+          <h3>{{ categoria }}</h3>
+        </div>
+
         <div class="produtos">
 
-          @for (produto of produtos; track produto.id) {
+          @for (produto of produtosPorCategoria(categoria); track produto.id) {
             <app-produto
               imageClass="verde"
               imageContent="bi-capsule"
@@ -23,65 +53,15 @@
               buttonLink="#carrinho">
             </app-produto>
           } @empty {
-            <p>Nenhum produto encontrado.</p>
+            <p>Nenhum produto nesta categoria.</p>
           }
 
         </div>
-      }
 
-    </section>
-  } @else {
+      </section>
 
-  <section class="categoria">
-    <div class="categoria-header">
-      <h3>Vitaminas</h3>
-      <button class="botao ver-mais">Ver mais →</button>
-    </div>
-    <div class="produtos">
-      <app-produto imageClass="verde" imageContent="bi-capsule" tag="Oferta" title="Vitamina C" description="Vitamina C 1000mg" price="R$ 19,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="verde" imageContent="bi-capsule" tag="Oferta" title="Vitamina C" description="Vitamina C 1000mg" price="R$ 19,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="verde" imageContent="bi-capsule" tag="Oferta" title="Vitamina C" description="Vitamina C 1000mg" price="R$ 19,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="verde" imageContent="bi-capsule" tag="Oferta" title="Vitamina C" description="Vitamina C 1000mg" price="R$ 19,90" buttonLink="#carrinho"></app-produto>
-    </div>
-</section>
+    }
 
-<section class="categoria">
-  <div class="categoria-header">
-    <h3>Remédios</h3>
-    <button class="botao ver-mais">Ver mais →</button>
-  </div>
-    <div class="produtos">
-      <app-produto imageClass="azul" imageContent="bi-droplet-half" tag="Oferta" title="Shampoo" description="Shampoo para uso diário" price="R$ 24,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="azul" imageContent="bi-droplet-half" tag="Oferta" title="Shampoo" description="Shampoo para uso diário" price="R$ 24,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="azul" imageContent="bi-droplet-half" tag="Oferta" title="Shampoo" description="Shampoo para uso diário" price="R$ 24,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="azul" imageContent="bi-droplet-half" tag="Oferta" title="Shampoo" description="Shampoo para uso diário" price="R$ 24,90" buttonLink="#carrinho"></app-produto>
-    </div>
-</section>
-
-<section class="categoria">
-  <div class="categoria-header">
-    <h3>Saúde Capilar</h3>
-    <button class="botao ver-mais">Ver mais →</button>
-  </div>
-    <div class="produtos">
-      <app-produto imageClass="rosa" imageContent="bi-stars" tag="Destaque" title="Sabonete" description="Sabonete líquido" price="R$ 12,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="rosa" imageContent="bi-stars" tag="Destaque" title="Sabonete" description="Sabonete líquido" price="R$ 12,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="rosa" imageContent="bi-stars" tag="Destaque" title="Sabonete" description="Sabonete líquido" price="R$ 12,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="rosa" imageContent="bi-stars" tag="Destaque" title="Sabonete" description="Sabonete líquido" price="R$ 12,90" buttonLink="#carrinho"></app-produto>
-    </div>
-</section>
-
-<section class="categoria">
-  <div class="categoria-header">
-    <h3>Cremes</h3>
-    <button class="botao ver-mais">Ver mais →</button>
-  </div>
-    <div class="produtos">
-      <app-produto imageClass="amarelo" imageContent="bi-heart-pulse" tag="Novidade" title="Multivitamínico" description="Suplemento vitamínico" price="R$ 39,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="amarelo" imageContent="bi-heart-pulse" tag="Novidade" title="Multivitamínico" description="Suplemento vitamínico" price="R$ 39,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="amarelo" imageContent="bi-heart-pulse" tag="Novidade" title="Multivitamínico" description="Suplemento vitamínico" price="R$ 39,90" buttonLink="#carrinho"></app-produto>
-      <app-produto imageClass="amarelo" imageContent="bi-heart-pulse" tag="Novidade" title="Multivitamínico" description="Suplemento vitamínico" price="R$ 39,90" buttonLink="#carrinho"></app-produto>
-    </div>
-</section>
   }
+
 </div>
